@@ -3,7 +3,10 @@
        "pages/cancer1/detail",
         "pages/index/index",
         "pages/chat/chat",
-        "pages/cancer2/detail"
+        "pages/percent/detail",
+        "pages/formulaOfGGO_one/detail",
+        "pages/formulaOfGGO_two/detail",
+        "pages/formulaOfTubercle/detail"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -17,20 +20,19 @@
       "list": [
         {
           "pagePath": "pages/cancer1/detail",
-          "text": "运动",
+          "text": "文章",
           "iconPath": "images/run.png",
           "selectedIconPath": "images/run-s.png"
         },
         {
           "pagePath": "pages/index/index",
-          "text": "饮食",
+          "text": "文章",
           "iconPath": "images/food.png",
           "selectedIconPath": "images/food-s.png"
         },
-       
         {
-          "pagePath": "pages/cancer2/detail",
-          "text": "我的",
+          "pagePath": "pages/percent/detail",
+          "text": "概率计算",
           "iconPath": "images/me.png",
           "selectedIconPath": "images/me-s.png"
         }

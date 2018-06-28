@@ -1,0 +1,20 @@
+<view class="root">
+    <view class="line">
+        <text>肺部GGO恶性概率</text>
+        <view bindtap="countA" class="demo">
+            {{chooseA}}
+            <view class="link">></view>
+        </view>
+        <view bindtap="countB" class="demo">
+            实性成分>=50%
+            <view class="link"> ></view>
+        </view>
+    </view>
+    <view class="line">
+        <text>肺部实性结节恶性概率</text>
+        <view bindtap="countC" class="demo">
+            恶性概率计算
+            <view class="link">></view>
+        </view>
+    </view>
+</view>

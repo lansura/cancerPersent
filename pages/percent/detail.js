@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    chooseA : "实性成分<50%"
   },
 
   /**
@@ -62,5 +62,14 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  countA() {
+    wx.navigateTo({ url: '../formulaOfGGO_one/detail' });
+  },
+  countB() {
+    wx.navigateTo({ url: '../formulaOfGGO_two/detail' });
+  },
+  countC() {
+    wx.navigateTo({ url: '../formulaOfTubercle/detail' });
   }
 })
