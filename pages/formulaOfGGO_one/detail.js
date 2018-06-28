@@ -2,28 +2,35 @@ const app = getApp()
 Page({
   data: {
     age: 0,
-    smokeHistory: 0,
-    cancerHistory: 0,
+    symptom: 0,
+    proteinNum: 0,
     tubercle: 0,
-    spiculeSign: 0,
-    tubercleLocation: 0,
+    pagination: 0,
+    calcification: 0,
     nickName: '',
     userInfoAvatar: '',
     tubercleArray: {},
+    proteinNumArray:{},
     ageArray: {},
     cancerPercent: 0,
     level: '',
     check: [
-      { name: '0', value: '无', checked: true },
-      { name: '1', value: '有', checked: false },
+      { name: '0', value: '否', checked: true },
+      { name: '1', value: '是', checked: false },
     ],
   },
 
   onLoad: function (options) {
     var tubercleArray = [];
+    var proteinNumArray = [];
     var ageArray = [];
     var cancerPercent = 0;
     var that = this;
+    //血清总蛋白取值范围
+    for (var j = 0; j < 150; j++) {
+      proteinNumArray.push(j);
+    }
+    //结节直径取值范围
     for (var j = 0; j < 150; j++) {
       tubercleArray.push(j);
     }
@@ -63,21 +70,21 @@ Page({
       }
     })
     wx.getStorage({
-      key: 'infoSmokeHistory',
+      key: 'infoSymptom',
       success: function (res) {
         if (res.data) {
           that.setData({
-            smokeHistory: res.data
+            symptom: res.data
           })
         }
       }
     })
     wx.getStorage({
-      key: 'infoCancerHistory',
+      key: 'infoProteinNum',
       success: function (res) {
         if (res.data) {
           that.setData({
-            cancerHistory: res.data
+            proteinNum: res.data
           })
         }
       }
@@ -93,21 +100,21 @@ Page({
       }
     })
     wx.getStorage({
-      key: 'infoSpiculeSign',
+      key: 'infoPagination',
       success: function (res) {
         if (res.data) {
           that.setData({
-            spiculeSign: res.data
+            pagination: res.data
           })
         }
       }
     })
     wx.getStorage({
-      key: 'infoTubercleLocation',
+      key: 'infoCalcification',
       success: function (res) {
         if (res.data) {
           that.setData({
-            tubercleLocation: res.data
+            calcification: res.data
           })
         }
       }
@@ -144,24 +151,24 @@ Page({
 
     }
   },
-  smokeHistoryChange: function (e) {
-    console.log('吸烟史：', e.detail.value);
+  symptomChange: function (e) {
+    console.log('症状表现：', e.detail.value);
     this.setData({
-      smokeHistory: e.detail.value
+      symptom: e.detail.value
     })
     try {
-      wx.setStorage({ key: 'infoSmokeHistory', data: parseInt(e.detail.value) })
+      wx.setStorage({ key: 'infoSymptom', data: parseInt(e.detail.value) })
     } catch (e) {
 
     }
   },
-  cancerHistoryChange: function (e) {
-    console.log('五年内胸外肿瘤病史：', e.detail.value)
+  proteinNumChange: function (e) {
+    console.log('血清总蛋白：', e.detail.value)
     this.setData({
-      cancerHistory: e.detail.value
+      proteinNum: e.detail.value
     })
     try {
-      wx.setStorage({ key: 'infoCancerHistory', data: parseInt(e.detail.value) })
+      wx.setStorage({ key: 'infoProteinNum', data: parseInt(e.detail.value) })
     } catch (e) {
 
     }
@@ -177,24 +184,24 @@ Page({
 
     }
   },
-  spiculeSignChange: function (e) {
-    console.log('毛刺征：', e.detail.value)
+  paginationChange: function (e) {
+    console.log('分页征：', e.detail.value)
     this.setData({
-      spiculeSign: e.detail.value
+      pagination: e.detail.value
     })
     try {
-      wx.setStorage({ key: 'infoSpiculeSign', data: parseInt(e.detail.value) })
+      wx.setStorage({ key: 'infoPagination', data: parseInt(e.detail.value) })
     } catch (e) {
 
     }
   },
-  tubercleLocationChange: function (e) {
-    console.log('结节位于上叶：', e.detail.value)
+  calcificationChange: function (e) {
+    console.log('钙化征：', e.detail.value)
     this.setData({
-      tubercleLocation: e.detail.value
+      calcification: e.detail.value
     })
     try {
-      wx.setStorage({ key: 'infoTubercleLocation', data: parseInt(e.detail.value) })
+      wx.setStorage({ key: 'infoCalcification', data: parseInt(e.detail.value) })
     } catch (e) {
 
     }
@@ -203,19 +210,19 @@ Page({
   //按钮事件响应
   click: function (e) {
     var age = parseInt(this.data.age);
-    var smokeHistory = parseInt(this.data.smokeHistory);
-    var cancerHistory = parseInt(this.data.cancerHistory);
+    var symptom = parseInt(this.data.symptom);
+    var proteinNum = parseInt(this.data.proteinNum);
     var tubercle = parseInt(this.data.tubercle);
-    var spiculeSign = parseInt(this.data.spiculeSign);
-    var tubercleLocation = parseInt(this.data.tubercleLocation);
+    var pagination = parseInt(this.data.pagination);
+    var calcification = parseInt(this.data.calcification);
     var level = '';
     console.log('age : ' + age);
-    console.log('smokeHistory : ' + smokeHistory);
-    console.log('cancerHistory : ' + cancerHistory);
+    console.log('symptom : ' + symptom);
+    console.log('proteinNum : ' + proteinNum);
     console.log('tubercle : ' + tubercle);
-    console.log('spiculeSign : ' + spiculeSign);
-    console.log('tubercleLocation : ' + tubercleLocation);
-    var baseNumber = -6.8272 + (0.0391 * age) + (0.7917 * smokeHistory) + (1.3388 * cancerHistory) + (0.1274 * tubercle) + (1.0407 * spiculeSign) + (0.7838 * tubercleLocation);
+    console.log('pagination : ' + pagination);
+    console.log('calcification : ' + calcification);
+    var baseNumber = -7.442 + (0.051 * age) + (0.711 * symptom) + (0.066 * proteinNum) + (0.032 * tubercle) + (1.071 * pagination) + (1.22 * calcification);
     console.log('baseNumber : ' + baseNumber);
     var pow = Math.pow(Math.E, baseNumber);
     var cancerPercent = (pow / (1 + pow) * 100).toFixed(2);

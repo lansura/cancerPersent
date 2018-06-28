@@ -3,9 +3,9 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                吸烟史
+                症状表现
                 </view>
-                <radio-group class="radio-group" bindchange="smokeHistoryChange">
+                <radio-group class="radio-group" bindchange="symptomChange">
                    <label class="radio" wx:for="{{check}}">
                       <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
                    </label>
@@ -13,13 +13,11 @@
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                胸外肿瘤病史 (五年内)
+                血清总蛋白 (g/L)
                 </view>
-                <radio-group class="radio-group" bindchange="cancerHistoryChange">
-                   <label class="radio" wx:for="{{check}}">
-                      <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-                   </label>
-                </radio-group>
+                <picker bindchange="proteinNumChange" value="{{0}}" range="{{proteinNumArray}}" >
+                  <view class="picker">{{proteinNum}} g/L</view>
+                </picker>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">
@@ -31,9 +29,9 @@
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                毛刺征
+                分叶征
                 </view>
-                 <radio-group class="radio-group" bindchange="spiculeSignChange">
+                 <radio-group class="radio-group" bindchange="paginationChange">
                    <label class="radio" wx:for="{{check}}">
                       <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
                    </label>
@@ -41,9 +39,9 @@
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                结节位于上叶
+                钙化灶
                 </view>
-                 <radio-group class="radio-group" bindchange="tubercleLocationChange">
+                 <radio-group class="radio-group" bindchange="calcificationChange">
                    <label class="radio" wx:for="{{check}}">
                       <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
                    </label>
