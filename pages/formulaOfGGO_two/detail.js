@@ -1,7 +1,6 @@
 const app = getApp()
 Page({
   data: {
-    age: 0,
     sexual: 0,
     FEV1Percent: 0,
     tubercle: 0,
@@ -11,7 +10,6 @@ Page({
     userInfoAvatar: '',
     tubercleArray: {},
     FEV1PercentArray: {},
-    ageArray: {},
     cancerPercent: 0,
     level: '',
     check: [
@@ -23,7 +21,6 @@ Page({
   onLoad: function (options) {
     var tubercleArray = [];
     var FEV1PercentArray = [];
-    var ageArray = [];
     var cancerPercent = 0;
     var that = this;
     //FEV1Percent取值范围
@@ -56,20 +53,10 @@ Page({
         console.log("获取用户信息完成！")
       }
     })
-
-    wx.getStorage({
-      key: 'infoAge',
-      success: function (res) {
-        if (res.data) {
-          that.setData({
-            age: res.data
-          })
-        }
-      }
-    })
     wx.getStorage({
       key: 'infoSexual',
       success: function (res) {
+        console.log("----------"+res.data);
         if (res.data) {
           that.setData({
             sexual: res.data
@@ -118,7 +105,7 @@ Page({
       }
     })
     wx.getStorage({
-      key: 'infoPercent1',
+      key: 'infoPercent2',
       success: function (res) {
         if (res.data) {
           that.setData({
@@ -128,7 +115,7 @@ Page({
       }
     })
     wx.getStorage({
-      key: 'infoLevel1',
+      key: 'infoLevel2',
       success: function (res) {
         if (res.data) {
           that.setData({
@@ -137,17 +124,6 @@ Page({
         }
       }
     })
-  },
-  bindAgeChange: function (e) {
-    console.log('age值', this.data.ageArray[e.detail.value])
-    this.setData({
-      age: this.data.ageArray[e.detail.value]
-    })
-    try {
-      wx.setStorage({ key: 'infoAge', data: this.data.ageArray[e.detail.value] })
-    } catch (e) {
-
-    }
   },
   bindSexualChange: function (e) {
     console.log('男性：', e.detail.value);
@@ -207,14 +183,12 @@ Page({
 
   //按钮事件响应
   click: function (e) {
-    var age = parseInt(this.data.age);
     var sexual = parseInt(this.data.sexual);
     var FEV1Percent = parseInt(this.data.FEV1Percent);
     var tubercle = parseInt(this.data.tubercle);
     var pagination = parseInt(this.data.pagination);
     var calcification = parseInt(this.data.calcification);
     var level = '';
-    console.log('age : ' + age);
     console.log('sexual : ' + sexual);
     console.log('FEV1Percent : ' + FEV1Percent);
     console.log('tubercle : ' + tubercle);
@@ -239,10 +213,10 @@ Page({
       level: level
     })
     try {
-      wx.setStorageSync('infoPercent1', cancerPercent)
+      wx.setStorageSync('infoPercent2', cancerPercent)
     } catch (e) { }
     try {
-      wx.setStorageSync('infoLevel1', level)
+      wx.setStorageSync('infoLevel2', level)
     } catch (e) { }
   },
 

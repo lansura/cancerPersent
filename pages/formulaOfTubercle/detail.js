@@ -96,6 +96,7 @@ Page({
       key: 'infoSpiculeSign',
       success: function (res) {
         if (res.data) {
+          console.log(spiculeSign);
           that.setData({
             spiculeSign: res.data
           })
@@ -113,7 +114,7 @@ Page({
       }
     })
     wx.getStorage({
-      key: 'infoPercent1',
+      key: 'infoPercent3',
       success: function (res) {
         if (res.data) {
           that.setData({
@@ -123,7 +124,7 @@ Page({
       }
     })
     wx.getStorage({
-      key: 'infoLevel1',
+      key: 'infoLevel3',
       success: function (res) {
         if (res.data) {
           that.setData({
@@ -234,10 +235,10 @@ Page({
       level: level
     })
     try {
-      wx.setStorageSync('infoPercent1', cancerPercent)
+      wx.setStorageSync('infoPercent3', cancerPercent)
     } catch (e) {}
     try {
-      wx.setStorageSync('infoLevel1', level)
+      wx.setStorageSync('infoLevel3', level)
     } catch (e) { }
   },
   

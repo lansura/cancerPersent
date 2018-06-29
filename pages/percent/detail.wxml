@@ -6,7 +6,7 @@
             <view class="link">></view>
         </view>
         <view bindtap="countB" class="demo">
-            实性成分>=50%
+            实性成分 >= 50%
             <view class="link"> ></view>
         </view>
     </view>
