@@ -1,8 +1,6 @@
 {
     "pages": [
-       "pages/cancer1/detail",
-        "pages/index/index",
-        "pages/chat/chat",
+       "pages/home/detail",
         "pages/percent/detail",
         "pages/formulaOfGGO_one/detail",
         "pages/formulaOfGGO_two/detail",
@@ -19,16 +17,10 @@
       "selectedColor": "#1296db",
       "list": [
         {
-          "pagePath": "pages/cancer1/detail",
-          "text": "文章",
-          "iconPath": "images/run.png",
-          "selectedIconPath": "images/run-s.png"
-        },
-        {
-          "pagePath": "pages/index/index",
-          "text": "文章",
-          "iconPath": "images/food.png",
-          "selectedIconPath": "images/food-s.png"
+          "pagePath": "pages/home/detail",
+          "text": "首页",
+          "iconPath": "images/home.png",
+          "selectedIconPath": "images/home_active.png"
         },
         {
           "pagePath": "pages/percent/detail",

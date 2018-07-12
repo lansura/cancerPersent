@@ -38,6 +38,7 @@ Page({
       ageArray.push(k);
     }
     this.setData({
+      proteinNumArray: proteinNumArray,
       tubercleArray: tubercleArray,
       ageArray: ageArray,
     })

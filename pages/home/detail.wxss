@@ -1,0 +1,6 @@
+.healthStyle{
+    display:block;
+    margin:30px auto;
+    width:375px;
+    height:627px;
+}
